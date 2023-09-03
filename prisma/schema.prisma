@@ -1,0 +1,31 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Post {
+  id    Int    @id @default(autoincrement())
+  title String
+}
+
+// export interface Root {
+// id: number
+// slug: string
+// url: string
+// title: string
+// content: string
+// image: string
+// thumbnail: string
+// status: string
+// category: string
+// publishedAt: string
+// updatedAt: string
+// userId: number
+// }
