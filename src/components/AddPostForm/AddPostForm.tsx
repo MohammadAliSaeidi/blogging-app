@@ -5,7 +5,8 @@ import { Editor } from "@tinymce/tinymce-react";
 
 export default function AddPostForm() {
 	const editorRef = useRef(null);
-	const log = () => {
+	const log = (e: any) => {
+		e.preventDefault();
 		if (editorRef.current) {
 			console.log(editorRef.current.getContent());
 		}
@@ -18,22 +19,20 @@ export default function AddPostForm() {
 			</label>
 			<Editor
 				onInit={(evt, editor) => (editorRef.current = editor)}
-				initialValue="<p>This is the initial content of the editor.</p>"
+				initialValue="<p>Type your post content here...</p>"
 				init={{
-					height: 500,
+					content_css: "dark",
+					skin: "oxide-dark",
+					selector: "textarea#emoticons",
 					menubar: false,
-					plugins: [
-						"advlist autolink lists link image charmap print preview anchor",
-						"searchreplace visualblocks code fullscreen",
-						"insertdatetime media table paste code help wordcount",
-					],
+					height: 300,
+					plugins: "emoticons",
 					toolbar:
-						"undo redo | formatselect | " +
-						"bold italic backcolor | alignleft aligncenter " +
-						"alignright alignjustify | bullist numlist outdent indent | " +
-						"removeformat | help",
+						"undo redo | blocks | bold italic strikethrough | " +
+						"alignleft aligncenter alignright alignjustify | " +
+						"outdent indent | numlist bullist | emoticons",
 					content_style:
-						"body { font-family:Helvetica,Arial,sans-serif; font-size:14px }",
+						"body { font-family:Roboto,Helvetica,Arial,sans-serif; font-size:16px }",
 				}}
 			/>
 			<button onClick={log}>Log editor content</button>
