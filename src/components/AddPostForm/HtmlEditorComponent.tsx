@@ -1,6 +1,6 @@
 import {useController, useFormContext} from "react-hook-form";
 import {Editor} from "@tinymce/tinymce-react";
-import React, {useRef} from "react";
+import React from "react";
 
 export const HtmlEditorComponent = ({name}: { name: any }) => {
     const {control} = useFormContext<PostFormData>();
@@ -14,7 +14,7 @@ export const HtmlEditorComponent = ({name}: { name: any }) => {
                 onEditorChange={onChange}
                 init={{
                     content_css: "dark",
-                    skin: "",
+                    skin: "oxide-dark",
                     selector: "textarea#emoticons",
                     menubar: false,
                     height: 300,
