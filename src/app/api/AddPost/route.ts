@@ -1,4 +1,4 @@
-import dbConnect from "../../../../lib/dbConnect";
+import dbConnect from "../../../../lib/dbConnectMongo";
 import PostModel from "../../../../models/PostModel";
 
 export async function POST(request: Request) {
