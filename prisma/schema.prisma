@@ -1,13 +1,10 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
 }
 
 datasource db {
-  provider = "sqlite"
-  url      = env("DATABASE_URL")
+  provider = "postgresql"
+  url      = env("POSTGRES_URL")
 }
 
 model Post {
@@ -15,17 +12,13 @@ model Post {
   title String
 }
 
-// export interface Root {
-// id: number
-// slug: string
-// url: string
-// title: string
-// content: string
-// image: string
-// thumbnail: string
-// status: string
-// category: string
-// publishedAt: string
-// updatedAt: string
-// userId: number
-// }
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  email         String?   @unique
+  password      String?
+  emailVerified DateTime?
+  image         String?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+}
