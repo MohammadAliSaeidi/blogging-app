@@ -10,18 +10,25 @@
 	.button {
 		@apply select-none w-fit flex items-center gap-2 rounded-sm text-lg font-medium px-4 py-1.5 cursor-pointer duration-150 box-content;
 	}
+
 	.button-filled {
 		@apply button text-white bg-[var(--c-primary)] hover:bg-[var(--c-primary-hover)];
 	}
+
 	.button-outline {
 		@apply button border-2 border-[var(--c-primary)] text-[var(--c-primary)] hover:bg-[var(--c-primary-hover)] hover:text-white;
 	}
+
+	.button-no-bg {
+		@apply button bg-none border-none ;
+	}
+
 	.page-content {
 		@apply max-w-screen-2xl mx-auto py-5 px-5;
 	}
 
 	.blurred-glass {
-		@apply backdrop-blur-md bg-gray-800/30 border-gray-50/10;
+		@apply backdrop-blur-sm border-gray-50/10;
 	}
 }
 

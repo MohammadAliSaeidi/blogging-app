@@ -1,24 +1,21 @@
 import React from "react";
 
 interface Props {
-	children:
-		| string
-		| JSX.Element
-		| JSX.Element[]
-		| React.ReactNode
-		| undefined;
-	mode?: "button-filled" | "button-outline" | undefined;
+	children: string | JSX.Element | JSX.Element[] | React.ReactNode;
+	mode?: "button-filled" | "button-outline" | "button-no-bg" | undefined;
 	type?: "button" | "submit" | "reset" | undefined;
+	onClick?: (event: React.MouseEvent) => void;
 }
 
-export default function Button({ children, mode, type }: Props) {
+export default function Button({ onClick, children, mode, type }: Props) {
 	let styles: string;
 
 	return (
 		<button
 			className={mode || "button-filled"}
-			type={type}
+			type={type || "button"}
 			draggable={false}
+			onClick={onClick}
 		>
 			{children}
 		</button>

@@ -2,6 +2,7 @@ import NextAuth from "next-auth/next";
 import CredentialsProvider from "next-auth/providers/credentials";
 import prisma from "../../../../../lib/dbConnectPostgres";
 
+
 const handler = NextAuth({
 	providers: [
 		CredentialsProvider({
