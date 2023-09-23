@@ -8,6 +8,7 @@ import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import DarkModeToggle from "@/components/Header/DarkModeToggle";
 import { signIn, useSession } from "next-auth/react";
+import { useState } from "react";
 
 export interface IFormValues {
 	usernameOrEmail: string;
@@ -18,19 +19,20 @@ export default function SignIn() {
 	const { handleSubmit, register, formState } = useForm<IFormValues>({
 		defaultValues: { usernameOrEmail: "", password: "" },
 	});
-
+	const [loading, setLoading] = useState<boolean>(false);
 	const { status } = useSession();
-
 	const router = useRouter();
 
 	const onSubmit = async (data: IFormValues) => {
 		try {
-			const res = await signIn("Credentials", {
+			setLoading(true);
+			await signIn("Credentials", {
 				redirect: false,
 				usernameOrEmail: data.usernameOrEmail,
 				password: data.password,
+				callbackUrl: "/",
 			});
-			console.log(res)
+			setLoading(false);
 		} catch (error: any) {
 			console.error(error);
 		}
@@ -40,17 +42,11 @@ export default function SignIn() {
 		}
 	};
 
-	const openSignUpPage = () => {
-		router.push(`signup`);
-	};
-
-	console.log(status);
-
 	return (
 		<>
 			<Header>
 				<DarkModeToggle />
-				<Button size="small" onClick={openSignUpPage}>
+				<Button size="small" onClick={() => router.push(`signup`)}>
 					Sign up
 				</Button>
 			</Header>
@@ -71,7 +67,14 @@ export default function SignIn() {
 							label="Password"
 							type="password"
 						/>
-						<Button disabled={!formState.isValid} size="large" type="submit" className="mt-3">
+						<Button
+							disabled={!formState.isValid}
+							size="large"
+							type="submit"
+							style="button-filled-invert"
+							className="mt-3"
+							loading={loading}
+						>
 							Log in
 						</Button>
 					</form>

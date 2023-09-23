@@ -28,7 +28,6 @@ const handler = NextAuth({
 					},
 				});
 
-				
 				if (user && user.password) {
 					const isValid = await compare(credentials.password, user.password);
 					console.log("isValid", isValid);
@@ -44,8 +43,8 @@ const handler = NextAuth({
 	secret: process.env.NEXTAUTH_SECRET as string,
 	// TODO: convert session strategy to the database
 	session: {
-		strategy: "jwt"
-	}
+		strategy: "jwt",
+	},
 });
 
 export { handler as GET, handler as POST };
