@@ -15,36 +15,28 @@
 		@apply dynamic-border h-9 rounded-md py-2 px-4 outline outline-0 outline-black/10 dark:outline-white/20 duration-100 focus:outline-4 focus:border-black/50 dark:focus:border-white/75 dark:bg-neutral-950;
 	}
 
+	.button {
+		@apply select-none flex justify-center items-center gap-2 rounded-md text-base font-medium px-4 py-1.5 cursor-pointer box-content duration-100 dynamic-border;
+	}
+
 	.disabled-button {
 		@apply bg-zinc-100 dark:bg-zinc-900 hover:bg-zinc-100 hover:dark:bg-zinc-900 text-neutral-400 dark:text-neutral-400 cursor-not-allowed;
 	}
 
-	.button {
-		@apply select-none flex justify-center items-center gap-2 rounded-md text-base font-medium px-4 py-1.5 cursor-pointer duration-150 box-content;
-	}
-
-	.button-isochromatic {
-		@apply hover:bg-black/5 dark:bg-neutral-950 dark:hover:bg-neutral-900 text-neutral-800 dark:text-neutral-200 disabled:disabled-button;
-	}
-
-	.button-contrast {
-		/* @apply  */
-	}
-
-	.button- .button-filled {
-		@apply button dynamic-border duration-100;
+	.button-filled-isochromatic {
+		@apply button bg-white hover:bg-neutral-100 dark:bg-neutral-950 dark:hover:bg-neutral-900 text-neutral-800 dark:text-neutral-200 disabled:disabled-button;
 	}
 
 	.button-filled-invert {
-		@apply button;
+		@apply button bg-neutral-900 hover:bg-neutral-700 dark:bg-gray-200 dark:hover:bg-stone-300 text-white dark:text-neutral-950 disabled:disabled-button;
 	}
 
 	.button-outline {
-		@apply button rounded-md border-[var(--c-primary)] text-[var(--c-primary)] hover:bg-[var(--c-primary-hover)] hover:text-white;
+		@apply border-[var(--c-primary)] text-[var(--c-primary)] hover:bg-[var(--c-primary-hover)] hover:text-white;
 	}
 
 	.button-icon {
-		@apply button rounded-full p-2;
+		@apply rounded-full p-2 border-none;
 	}
 
 	.page-content {

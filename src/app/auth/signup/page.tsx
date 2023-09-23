@@ -4,7 +4,6 @@ import AuthenticationFormLayout from "@/components/AuthenticationFormLayout";
 import Button from "@/components/Button";
 import Header from "@/components/Header";
 import DarkModeToggle from "@/components/Header/DarkModeToggle";
-import Loading from "@/components/Loading";
 import TextInput from "@/components/TextInput";
 import axios from "axios";
 import { useRouter } from "next/navigation";
@@ -26,7 +25,7 @@ export default function SignUp() {
 	});
 
 	const openSignUpPage = () => {
-		router.push(`signup`);
+		router.push(`signin`);
 	};
 
 	const onSubmit = async (data: IFormValues) => {
@@ -44,7 +43,7 @@ export default function SignUp() {
 				</Button>
 			</Header>
 			<AuthenticationFormLayout>
-				<h1 className="h1">Sign up to Blogger</h1>
+				<h1 className="h1">Sign up in Blogger</h1>
 				<section className="relative flex flex-col gap-2 my-8">
 					<form className="flex flex-col items-stretch w-96 gap-3" onSubmit={handleSubmit(onSubmit)}>
 						<TextInput<IFormValues>
@@ -70,6 +69,7 @@ export default function SignUp() {
 							loading={loading}
 							disabled={!formState.isValid}
 							size="large"
+							style="button-filled-invert"
 							type="submit"
 							className="mt-3"
 						>

@@ -7,6 +7,7 @@ import TextInput from "@/components/TextInput";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import DarkModeToggle from "@/components/Header/DarkModeToggle";
+import { signIn, useSession } from "next-auth/react";
 
 export interface IFormValues {
 	usernameOrEmail: string;
@@ -18,15 +19,32 @@ export default function SignIn() {
 		defaultValues: { usernameOrEmail: "", password: "" },
 	});
 
+	const { status } = useSession();
+
 	const router = useRouter();
 
-	const onSubmit = (data: IFormValues) => {
-		console.log(data);
+	const onSubmit = async (data: IFormValues) => {
+		try {
+			const res = await signIn("Credentials", {
+				redirect: false,
+				usernameOrEmail: data.usernameOrEmail,
+				password: data.password,
+			});
+			console.log(res)
+		} catch (error: any) {
+			console.error(error);
+		}
+		if (status === "authenticated") {
+			console.log(status);
+			router.push("/");
+		}
 	};
 
 	const openSignUpPage = () => {
 		router.push(`signup`);
 	};
+
+	console.log(status);
 
 	return (
 		<>
