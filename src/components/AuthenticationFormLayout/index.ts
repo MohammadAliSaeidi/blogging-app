@@ -1,1 +1,1 @@
-export {default} from './AuthenticationFormLayout'
+export { default } from "./AuthenticationFormLayout";

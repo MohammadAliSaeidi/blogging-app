@@ -7,10 +7,7 @@ export default function DarkModeToggle() {
 	const { theme, setTheme } = useTheme();
 
 	return (
-		<Button
-			mode="button-icon"
-			onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-		>
+		<Button mode="button-icon" onClick={() => setTheme(theme === "dark" ? "light" : "dark")}>
 			{theme === "light" ? (
 				<svg
 					xmlns="http://www.w3.org/2000/svg"

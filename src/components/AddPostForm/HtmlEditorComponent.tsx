@@ -23,8 +23,7 @@ export const HtmlEditorComponent = ({ name }: { name: any }) => {
 					"undo redo | blocks | bold italic strikethrough | " +
 					"alignleft aligncenter alignright alignjustify | " +
 					"outdent indent | numlist bullist | emoticons",
-				content_style:
-					"body { font-family:Roboto,Helvetica,Arial,sans-serif; font-size:16px }",
+				content_style: "body { font-family:Roboto,Helvetica,Arial,sans-serif; font-size:16px }",
 			}}
 		/>
 	);

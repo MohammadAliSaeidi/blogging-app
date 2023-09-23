@@ -17,5 +17,4 @@ const PostSchema = new mongoose.Schema<PostModel>({
 	},
 });
 
-export default mongoose.models.PostModel ||
-	mongoose.model<PostModel>("PostModel", PostSchema);
+export default mongoose.models.PostModel || mongoose.model<PostModel>("PostModel", PostSchema);

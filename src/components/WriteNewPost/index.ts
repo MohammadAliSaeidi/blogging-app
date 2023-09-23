@@ -1,1 +1,1 @@
-export {default} from './WriteNewPost'
+export { default } from "./WriteNewPost";

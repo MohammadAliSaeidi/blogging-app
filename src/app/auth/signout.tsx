@@ -1,5 +1,3 @@
 export default function signout() {
-  return (
-    <div>signout</div>
-  )
+	return <div>signout</div>;
 }

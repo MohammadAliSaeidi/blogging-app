@@ -1,4 +1,4 @@
 type PostFormData = {
-    title: string;
-    content: string;
+	title: string;
+	content: string;
 };

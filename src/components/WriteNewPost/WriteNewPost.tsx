@@ -8,7 +8,6 @@ export default function WriteNewPost() {
 
 	function handleWriteButton() {
 		if (session.status === "authenticated") {
-			
 		}
 	}
 

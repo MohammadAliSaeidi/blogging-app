@@ -22,16 +22,8 @@ export default function AddPostForm() {
 	return (
 		<FormProvider {...methods}>
 			{/* onSubmit={onSubmit} */}
-			<form
-				className="flex flex-col gap-2"
-				onSubmit={(e) => e.preventDefault()}
-			>
-				<input
-					{...methods.register("title")}
-					className="input"
-					type={"text"}
-					placeholder={"title"}
-				/>
+			<form className="flex flex-col gap-2" onSubmit={(e) => e.preventDefault()}>
+				<input {...methods.register("title")} className="input" type={"text"} placeholder={"title"} />
 				<HtmlEditorComponent name="content" />
 
 				<button draggable={false}></button>
