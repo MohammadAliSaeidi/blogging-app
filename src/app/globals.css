@@ -3,39 +3,49 @@
 @tailwind utilities;
 
 @layer components {
+	* {
+		@apply text-neutral-800 dark:text-neutral-200;
+	}
+
+	.dynamic-border {
+		@apply border border-black/10 dark:border-white/10;
+	}
+
 	.input {
-		@apply min-h-[36px] rounded-[4px] py-2 px-4 border-2 border-gray-200 focus:outline-[var(--c-primary-hover)];
+		@apply dynamic-border h-9 rounded-md py-2 px-4 outline outline-0 outline-black/10 dark:outline-white/20 duration-100 focus:outline-4 focus:border-black/50 dark:focus:border-white/75 dark:bg-neutral-950;
+	}
+
+	.disabled-button {
+		@apply bg-zinc-100 dark:bg-zinc-900 hover:bg-zinc-100 hover:dark:bg-zinc-900 text-neutral-400 dark:text-neutral-400 cursor-not-allowed;
 	}
 
 	.button {
-		@apply select-none w-fit flex items-center gap-2 rounded-sm text-lg font-medium px-4 py-1.5 cursor-pointer duration-150 box-content;
+		@apply hover:bg-black/5 dark:bg-neutral-950 dark:hover:bg-neutral-900 text-neutral-800 dark:text-neutral-200 select-none flex justify-center items-center gap-2 rounded-md text-base font-medium px-4 py-1.5 cursor-pointer duration-150 box-content disabled:disabled-button;
 	}
 
 	.button-filled {
-		@apply button text-white bg-[var(--c-primary)] hover:bg-[var(--c-primary-hover)];
+		@apply button dynamic-border duration-100;
 	}
 
 	.button-outline {
-		@apply button border-2 border-[var(--c-primary)] text-[var(--c-primary)] hover:bg-[var(--c-primary-hover)] hover:text-white;
+		@apply button rounded-md border-[var(--c-primary)] text-[var(--c-primary)] hover:bg-[var(--c-primary-hover)] hover:text-white;
 	}
 
-	.button-no-bg {
-		@apply button bg-none border-none ;
+	.button-icon {
+		@apply button rounded-full p-2;
 	}
 
 	.page-content {
-		@apply max-w-screen-2xl mx-auto py-5 px-5;
+		@apply max-w-screen-2xl mx-auto py-20 px-5;
 	}
 
 	.blurred-glass {
-		@apply backdrop-blur-sm border-gray-50/10;
+		@apply backdrop-blur-sm dynamic-border;
 	}
-}
 
-:root {
-	/* palette */
-	--c-primary: #4e63f0;
-	--c-primary-hover: #4659d6;
+	.h1 {
+		@apply text-3xl font-bold mb-2;
+	}
 }
 
 * {

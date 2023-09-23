@@ -18,11 +18,10 @@ export default function RootLayout({
 }) {
 	return (
 		<html lang="en">
-			<body className={inter.className + " min-h-full bg-black"}>
+			<body className={inter.className + " min-h-full dark:bg-black"}>
 				<Providers>
 					<main>
-						<Header />
-						<div className="pt-16">{children}</div>
+						<div>{children}</div>
 					</main>
 				</Providers>
 			</body>

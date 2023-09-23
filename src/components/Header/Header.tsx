@@ -1,14 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import UserAvatarOrLogin from "../UserAvatarOrLogin";
-import Button from "../Button";
 import WriteNewPost from "../WriteNewPost";
+import DarkModeToggle from "./DarkModeToggle";
 
-export default function Header() {
+export default function Header({ children }: { children?: React.ReactNode }) {
 	return (
-		<header className="blurred-glass text-white w-screen mx-auto border-b z-50 fixed">
-			<div className="max-w-screen-lg mx-auto flex flex-row items-center h-12 py-1.5 ">
-				<UserAvatarOrLogin />
-				<WriteNewPost />
+		<header className="blurred-glass text-white w-screen mx-auto z-50 fixed border-0 border-b">
+			<div className="max-w-screen-lg mx-auto flex flex-row items-center gap-2 h-12 py-1.5 ">
+				{children}
 			</div>
 		</header>
 	);

@@ -17,7 +17,7 @@ export default function UserAvatarOrLogin() {
 						e.preventDefault();
 						signIn();
 					}}
-					className="button bg-rose-700  hover:bg-rose-800"
+					className="button-filled"
 				>
 					Login
 				</button>

@@ -1,27 +1,28 @@
 import NextAuth from "next-auth/next";
 import CredentialsProvider from "next-auth/providers/credentials";
 import prisma from "../../../../../lib/dbConnectPostgres";
-
+import { PrismaAdapter } from "@auth/prisma-adapter";
 
 const handler = NextAuth({
+	adapter: PrismaAdapter(prisma),
 	providers: [
 		CredentialsProvider({
 			name: "Credentials",
+			id: "Credentials",
 			credentials: {
-				username: {
-					label: "Username",
+				email: {
+					label: "Email",
 					type: "text",
-					placeholder: "Eldercare5064",
+					placeholder: "example@email.com",
 				},
 				password: { label: "Password", type: "password" },
 			},
 
-			async authorize(credentials, req) {
+			authorize: async (credentials, req) => {
 				if (!credentials) return null;
-
 				const user = await prisma.user.findUnique({
 					where: {
-						username: credentials.username,
+						email: credentials.email,
 						password: credentials.password,
 					},
 				});
@@ -33,6 +34,10 @@ const handler = NextAuth({
 			},
 		}),
 	],
+	pages: {
+		signIn: "/auth/signin",
+		signOut: "/auth/signout",
+	},
 	secret: process.env.NEXTAUTH_SECRET as string,
 });
 
