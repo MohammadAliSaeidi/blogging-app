@@ -20,11 +20,23 @@
 	}
 
 	.button {
-		@apply hover:bg-black/5 dark:bg-neutral-950 dark:hover:bg-neutral-900 text-neutral-800 dark:text-neutral-200 select-none flex justify-center items-center gap-2 rounded-md text-base font-medium px-4 py-1.5 cursor-pointer duration-150 box-content disabled:disabled-button;
+		@apply select-none flex justify-center items-center gap-2 rounded-md text-base font-medium px-4 py-1.5 cursor-pointer duration-150 box-content;
 	}
 
-	.button-filled {
+	.button-isochromatic {
+		@apply hover:bg-black/5 dark:bg-neutral-950 dark:hover:bg-neutral-900 text-neutral-800 dark:text-neutral-200 disabled:disabled-button;
+	}
+
+	.button-contrast {
+		/* @apply  */
+	}
+
+	.button- .button-filled {
 		@apply button dynamic-border duration-100;
+	}
+
+	.button-filled-invert {
+		@apply button;
 	}
 
 	.button-outline {

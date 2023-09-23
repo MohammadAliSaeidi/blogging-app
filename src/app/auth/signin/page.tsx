@@ -6,6 +6,7 @@ import Header from "@/components/Header";
 import TextInput from "@/components/TextInput";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
+import DarkModeToggle from "@/components/Header/DarkModeToggle";
 
 export interface IFormValues {
 	usernameOrEmail: string;
@@ -19,7 +20,7 @@ export default function SignIn() {
 
 	const router = useRouter();
 
-	const onSubmit = (data: any) => {
+	const onSubmit = (data: IFormValues) => {
 		console.log(data);
 	};
 
@@ -30,6 +31,7 @@ export default function SignIn() {
 	return (
 		<>
 			<Header>
+				<DarkModeToggle />
 				<Button size="small" onClick={openSignUpPage}>
 					Sign up
 				</Button>
@@ -37,7 +39,7 @@ export default function SignIn() {
 			<AuthenticationFormLayout>
 				<h1 className="h1">Log in to Blogger</h1>
 				<section className="flex flex-col gap-2 my-8">
-					<form className="flex flex-col items-stretch gap-3" onSubmit={handleSubmit(onSubmit)}>
+					<form className="flex flex-col items-stretch w-96 gap-3" onSubmit={handleSubmit(onSubmit)}>
 						<TextInput<IFormValues>
 							registerLabel="usernameOrEmail"
 							register={register}
@@ -52,7 +54,7 @@ export default function SignIn() {
 							type="password"
 						/>
 						<Button disabled={!formState.isValid} size="large" type="submit" className="mt-3">
-							Login
+							Log in
 						</Button>
 					</form>
 				</section>

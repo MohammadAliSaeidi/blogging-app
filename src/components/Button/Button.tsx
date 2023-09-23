@@ -1,16 +1,18 @@
 import React from "react";
+import Loading from "../Loading";
 
 interface Props {
 	children: string | JSX.Element | JSX.Element[] | React.ReactNode;
-	mode?: "button-icon" | "button-filled" | "button-outline";
+	style?: "button-icon" | "button-filled" | "button-filled-invert" | "button-outline";
 	type?: "button" | "submit" | "reset";
 	size?: "small" | "normal" | "large";
 	onClick?: (event: React.MouseEvent) => void;
 	className?: string;
 	disabled?: boolean;
+	loading?: boolean;
 }
 
-export default function Button({ onClick, children, mode, type, className, size, disabled: disabled }: Props) {
+export default function Button({ onClick, loading, children, style: mode, type, className, size, disabled: disabled }: Props) {
 	let sizeStyle: string;
 
 	switch (size) {
@@ -32,13 +34,15 @@ export default function Button({ onClick, children, mode, type, className, size,
 
 	return (
 		<button
-			disabled={disabled}
+			disabled={disabled || loading}
 			className={`${mode || "button-filled"} ${sizeStyle} ${className}`}
 			type={type || "button"}
 			draggable={false}
-			onClick={onClick}
+			onClick={() => {
+				if (!loading) onClick;
+			}}
 		>
-			{children}
+			{loading ? <Loading /> : children}
 		</button>
 	);
 }

@@ -12,7 +12,7 @@ export default function WriteNewPost() {
 	}
 
 	return (
-		<Button onClick={handleWriteButton} mode="button-icon">
+		<Button onClick={handleWriteButton} style="button-icon">
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
 				fill="none"
