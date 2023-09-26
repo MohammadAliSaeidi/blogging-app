@@ -21,14 +21,11 @@ export default function AddPostForm() {
 
 	return (
 		<FormProvider {...methods}>
-			{/* onSubmit={onSubmit} */}
-			<form className="flex flex-col gap-2" onSubmit={(e) => e.preventDefault()}>
+			<form className="flex flex-col gap-2" onSubmit={onSubmit}>
 				<input {...methods.register("title")} className="input" type={"text"} placeholder={"title"} />
 				<HtmlEditorComponent name="content" />
-
-				<button draggable={false}></button>
 				<div className="flex flex-row-reverse gap-2 justify-start">
-					<Button type="submit">
+					<Button type="submit" style="button-filled-invert">
 						Post
 						<svg
 							xmlns="http://www.w3.org/2000/svg"

@@ -24,15 +24,15 @@
 	}
 
 	.button-filled-isochromatic {
-		@apply button bg-white hover:bg-neutral-100 dark:bg-neutral-950 dark:hover:bg-neutral-900 text-neutral-800 dark:text-neutral-200 disabled:disabled-button;
+		@apply button bg-white hover:bg-neutral-100 dark:bg-neutral-950 dark:hover:bg-neutral-900 text-neutral-800 dark:text-neutral-100 disabled:disabled-button;
 	}
 
 	.button-filled-invert {
-		@apply button bg-neutral-900 hover:bg-neutral-700 dark:bg-gray-200 dark:hover:bg-stone-300 text-white dark:text-neutral-950 disabled:disabled-button;
+		@apply button bg-neutral-900 hover:bg-neutral-700 dark:bg-neutral-100 dark:hover:bg-stone-300 text-white dark:text-neutral-950 [&>*]:fill-white dark:[&>*]:fill-neutral-950 disabled:disabled-button;
 	}
 
 	.button-outline {
-		@apply border-[var(--c-primary)] text-[var(--c-primary)] hover:bg-[var(--c-primary-hover)] hover:text-white;
+		@apply button border text-[var(--c-primary)] hover:bg-[var(--c-primary-hover)] hover:text-white;
 	}
 
 	.button-icon {

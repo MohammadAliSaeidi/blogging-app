@@ -1,7 +1,4 @@
 import React, { useState } from "react";
-import UserAvatarOrLogin from "../UserAvatarOrLogin";
-import WriteNewPost from "../WriteNewPost";
-import DarkModeToggle from "./DarkModeToggle";
 
 export default function Header({ children }: { children?: React.ReactNode }) {
 	return (

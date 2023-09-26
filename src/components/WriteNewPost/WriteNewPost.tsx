@@ -2,12 +2,15 @@
 
 import { useSession } from "next-auth/react";
 import Button from "../Button";
+import { useRouter } from "next/navigation";
 
 export default function WriteNewPost() {
 	const session = useSession();
+	const router = useRouter();
 
 	function handleWriteButton() {
 		if (session.status === "authenticated") {
+			router.push("AddPost");
 		}
 	}
 

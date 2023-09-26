@@ -1,10 +1,15 @@
 import AddPostForm from "@/components/AddPostForm/AddPostForm";
+import Header from "@/components/Header";
 import React from "react";
 
 export default function page() {
 	return (
-		<div className="page-content">
-			<AddPostForm />
-		</div>
+		<>
+			<Header>
+			</Header>
+			<div className="page-content">
+				<AddPostForm />
+			</div>
+		</>
 	);
 }
