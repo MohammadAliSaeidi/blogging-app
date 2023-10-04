@@ -4,16 +4,21 @@ import React from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import { HtmlEditorComponent } from "@/components/AddPostForm/HtmlEditorComponent";
 import Button from "../Button";
+import { useSession } from "next-auth/react";
 
 export default function AddPostForm() {
+	const { data } = useSession();
+
 	const methods = useForm<PostFormData>();
 
-	const onSubmit = methods.handleSubmit((data) => {
-		console.log("data", data);
+	const onSubmit = methods.handleSubmit((formData) => {
+		console.log("data", formData);
+
+		const postData = { ...formData, userId: data?.user?.email };
 
 		fetch("api/AddPost", {
 			method: "POST",
-			body: JSON.stringify(data),
+			body: JSON.stringify(postData),
 		})
 			.then((response) => console.log(response))
 			.catch((error) => console.log(error));

@@ -1,11 +1,8 @@
 import NextAuth from "next-auth/next";
 import CredentialsProvider from "next-auth/providers/credentials";
-import prisma from "../../../../../lib/dbConnectPostgres";
-import { PrismaAdapter } from "@auth/prisma-adapter";
 import { compare } from "bcryptjs";
 
 const handler = NextAuth({
-	adapter: PrismaAdapter(prisma),
 	providers: [
 		CredentialsProvider({
 			name: "Credentials",
@@ -22,17 +19,17 @@ const handler = NextAuth({
 			authorize: async (credentials) => {
 				if (!credentials) return null;
 
-				const user = await prisma.user.findFirst({
-					where: {
-						OR: [{ email: credentials.usernameOrEmail }, { username: credentials.usernameOrEmail }],
-					},
-				});
+				// const user = await prisma.user.findFirst({
+				// 	where: {
+				// 		OR: [{ email: credentials.usernameOrEmail }, { username: credentials.usernameOrEmail }],
+				// 	},
+				// });
 
-				if (user && user.password) {
-					const isValid = await compare(credentials.password, user.password);
-					console.log("isValid", isValid);
-					if (isValid) return user;
-				}
+				// if (user && user.password) {
+				// 	const isValid = await compare(credentials.password, user.password);
+				// 	console.log("isValid", isValid);
+				// 	if (isValid) return user;
+				// }
 				return null;
 			},
 		}),
@@ -44,6 +41,14 @@ const handler = NextAuth({
 	// TODO: convert session strategy to the database
 	session: {
 		strategy: "jwt",
+	},
+	callbacks: {
+		async jwt({ token, account, profile }) {
+			console.log("account", account);
+			console.log("profile", profile);
+			
+			return token;
+		},
 	},
 });
 

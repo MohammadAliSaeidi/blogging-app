@@ -1,24 +1,14 @@
-version: "3"
+version: "3.3"
 services:
     mongo:
-        image: mongo:latest
-        container_name: mongo
-        env_file:
-            - ./.env.local
-        volumes:
-            - mongo:/data/db
+        image: mongo
         ports:
-            - "27018:27017"
-    postgres:
-        image: postgres
-        env_file:
-            - ./.env.local
-        ports:
-            - '30001:30001'
+            - "5004:5004"
+        command: mongod --port 5004
+        container_name: blogging-app-mongodb
+        environment:
+            - ./.env
         volumes:
-            - postgres:/var/lib/postgresql/data
-        command: -p 30001
+            - mongo-data:/data/db
 volumes:
-    mongo:
-    postgres:
-        driver: local
+    mongo-data:

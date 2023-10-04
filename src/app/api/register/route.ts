@@ -1,9 +1,12 @@
-import prisma from "../../../../lib/dbConnectPostgres";
 import { hash } from "bcryptjs";
 import { NextResponse } from "next/server";
+import UserModel from "../../../../models/UserModel";
+import dbConnect from "../../../../lib/dbConnectMongo";
 
 export async function POST(req: Request) {
 	try {
+		await dbConnect();
+
 		const { username, email, password } = (await req.json()) as {
 			username: string;
 			email: string;
@@ -11,16 +14,9 @@ export async function POST(req: Request) {
 		};
 		const hashed_password = await hash(password, 12);
 
-		const user = await prisma.user.create({
-			data: { username: username, password: hashed_password, email: email },
-		});
+		const user = await UserModel.create({ username: username, email: email, password: hashed_password });
 
-		return NextResponse.json({
-			user: {
-				username: user.name,
-				email: user.email,
-			},
-		});
+		return NextResponse.json(user);
 	} catch (error: any) {
 		return new NextResponse(
 			JSON.stringify({

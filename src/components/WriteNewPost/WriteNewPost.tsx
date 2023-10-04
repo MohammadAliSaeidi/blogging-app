@@ -9,9 +9,9 @@ export default function WriteNewPost() {
 	const router = useRouter();
 
 	function handleWriteButton() {
-		if (session.status === "authenticated") {
+		// if (session.status === "authenticated") {
 			router.push("AddPost");
-		}
+		// }
 	}
 
 	return (
