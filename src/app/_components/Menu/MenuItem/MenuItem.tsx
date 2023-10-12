@@ -1,4 +1,4 @@
-import { Key, ReactNode } from "react";
+import { ReactNode } from "react";
 
 interface Props {
 	onClick?: (event: React.MouseEvent) => void;

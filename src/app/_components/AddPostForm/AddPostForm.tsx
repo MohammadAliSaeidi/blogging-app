@@ -2,9 +2,9 @@
 
 import React from "react";
 import { FormProvider, useForm } from "react-hook-form";
-import { HtmlEditorComponent } from "@/components/AddPostForm/HtmlEditorComponent";
 import Button from "../Button";
 import { useSession } from "next-auth/react";
+import { HtmlEditorComponent } from "./HtmlEditorComponent";
 
 export default function AddPostForm() {
 	const { data } = useSession();

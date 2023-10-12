@@ -50,6 +50,10 @@
 	.h1 {
 		@apply text-3xl font-bold mb-2;
 	}
+
+	.form-error {
+		@apply rounded-md text-red-400 dark:bg-orange-950 px-4 text-sm py-3;
+	}
 }
 
 * {

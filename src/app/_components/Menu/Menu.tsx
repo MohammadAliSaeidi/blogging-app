@@ -1,6 +1,6 @@
 "use client";
 
-import React, { Key, ReactNode, useState } from "react";
+import React, { ReactNode, useState } from "react";
 
 interface Props {
 	defaultState?: "Open" | "Closed";
@@ -17,7 +17,7 @@ export default function Menu(props: Props) {
 		<div className="relative" onClick={() => setIsOpen((value) => !value)}>
 			{customMenuButton}
 			{isOpen && (
-				<div className="shadow-md shadow-black/50 m-2 -translate-x-[50%] left-[50%] blurred-glass [&>*]:px-8 [&>*]:py-2 absolute rounded-sm bg-zinc-900">
+				<div className="shadow-md border border-neutral-100 m-2 -translate-x-[50%] left-[50%] [&>*]:px-8 [&>*]:py-2 absolute rounded-sm bg-white dark:bg-zinc-900">
 					{children}
 				</div>
 			)}

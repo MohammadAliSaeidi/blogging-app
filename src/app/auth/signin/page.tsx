@@ -1,14 +1,14 @@
 "use client";
 
-import AuthenticationFormLayout from "@/components/AuthenticationFormLayout";
-import Button from "@/components/Button";
-import Header from "@/components/Header";
-import TextInput from "@/components/TextInput";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
-import DarkModeToggle from "@/components/Header/DarkModeToggle";
 import { signIn, useSession } from "next-auth/react";
 import { useState } from "react";
+import DarkModeToggle from "@/app/_components/Header/DarkModeToggle";
+import Header from "@/app/_components/Header";
+import Button from "@/app/_components/Button";
+import AuthenticationFormLayout from "@/app/_components/AuthenticationFormLayout";
+import TextInput from "@/app/_components/TextInput";
 
 export interface IFormValues {
 	usernameOrEmail: string;

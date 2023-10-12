@@ -18,8 +18,8 @@ const UserSchema = new Schema<UserModel>({
 	username: {
 		type: String,
 		required: [true, "Username is required"],
-		maxlength: [30, "Username must be less than 30 characters"],
-		minlength: [4, "Username must be more than 4 characters"],
+		maxlength: [16, "Username must be less than 16 characters"],
+		minlength: [5, "Username must be more than 5 characters"],
 		unique: true,
 		trim: true,
 		lowercase: true,

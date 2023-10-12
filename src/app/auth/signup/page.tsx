@@ -1,10 +1,10 @@
 "use client";
 
-import AuthenticationFormLayout from "@/components/AuthenticationFormLayout";
-import Button from "@/components/Button";
-import Header from "@/components/Header";
-import DarkModeToggle from "@/components/Header/DarkModeToggle";
-import TextInput from "@/components/TextInput";
+import AuthenticationFormLayout from "@/app/_components/AuthenticationFormLayout";
+import Button from "@/app/_components/Button";
+import Header from "@/app/_components/Header";
+import DarkModeToggle from "@/app/_components/Header/DarkModeToggle";
+import TextInput from "@/app/_components/TextInput";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -18,6 +18,7 @@ interface IFormValues {
 
 export default function SignUp() {
 	const [loading, setIsLoading] = useState<boolean>(false);
+	const [error, setError] = useState<string>("");
 	const router = useRouter();
 
 	const { register, handleSubmit, formState } = useForm<IFormValues>({
@@ -30,8 +31,15 @@ export default function SignUp() {
 
 	const onSubmit = async (data: IFormValues) => {
 		setIsLoading(true);
-		const response = await axios.post("/api/register", data);
-		setIsLoading(false);
+		setError("");
+		try {
+			await axios.post("/api/register", data, { validateStatus: () => false });
+			setIsLoading(false);
+		} catch (e: any) {
+			console.log(e);
+			setError(e.response.data.message);
+			setIsLoading(false);
+		}
 	};
 
 	return (
@@ -46,6 +54,7 @@ export default function SignUp() {
 				<h1 className="h1">Sign up in Blogger</h1>
 				<section className="relative flex flex-col gap-2 my-8">
 					<form className="flex flex-col items-stretch w-96 gap-3" onSubmit={handleSubmit(onSubmit)}>
+						{error !== "" && <div className="form-error self-stretch text-center">{error}</div>}
 						<TextInput<IFormValues>
 							registerLabel="email"
 							register={register}

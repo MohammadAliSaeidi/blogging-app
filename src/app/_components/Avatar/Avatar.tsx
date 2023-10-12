@@ -1,15 +1,17 @@
+"use client";
+
 import Image from "next/image";
 import Menu from "../Menu";
-import { MouseEvent } from "react";
 import { signOut } from "next-auth/react";
 import MenuItem from "../Menu/MenuItem";
 
 export interface Props {
-	image: string | null | undefined;
+	image?: string | null;
+	email?: string | null;
 }
 
 export default function Avatar(props: Props) {
-	const { image } = props;
+	const { image, email } = props;
 
 	return (
 		<Menu
@@ -29,6 +31,16 @@ export default function Avatar(props: Props) {
 					signOut();
 				}}
 			>
+				<Logout email={email} />
+			</MenuItem>
+		</Menu>
+	);
+}
+
+const Logout = ({ email }: { email?: string | null }) => {
+	return (
+		<div className="flex flex-col gap-2">
+			<div className="flex flex-row items-center gap-2">
 				Logout
 				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5">
 					<path
@@ -42,7 +54,15 @@ export default function Avatar(props: Props) {
 						clipRule="evenodd"
 					/>
 				</svg>
-			</MenuItem>
-		</Menu>
+			</div>
+			{email && <div className="text-sm text-neutral-350">{maskEmail(email)}</div>}
+		</div>
 	);
-}
+};
+
+const maskEmail = (email: string) => {
+	return email.replace(/[^\s]*(?=@)/, function (match) {
+		const sliceIndex = Math.floor(match.length / 1.1);
+		return match.slice(0, match.length - sliceIndex) + "*".repeat(sliceIndex);
+	});
+};

@@ -1,7 +1,7 @@
-import Header from "@/components/Header";
-import DarkModeToggle from "@/components/Header/DarkModeToggle";
-import UserAvatarOrLogin from "@/components/UserAvatarOrLogin";
-import WriteNewPost from "@/components/WriteNewPost";
+import Header from "./_components/Header";
+import DarkModeToggle from "./_components/Header/DarkModeToggle";
+import UserAvatarOrLogin from "./_components/UserAvatarOrLogin";
+import WriteNewPost from "./_components/WriteNewPost";
 
 export default async function Home() {
 	return (

@@ -11,7 +11,7 @@ export default function UserAvatarOrLogin() {
 
 	return (
 		<>
-			{status === "authenticated" && <Avatar image={data.user?.image} />}
+			{status === "authenticated" && <Avatar email={data.user?.email} image={data.user?.image} />}
 			{status === "unauthenticated" && (
 				<Button
 					onClick={(e) => {

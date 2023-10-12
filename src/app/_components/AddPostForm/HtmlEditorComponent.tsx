@@ -3,7 +3,7 @@ import React, { useRef } from "react";
 import { Editor } from "@tinymce/tinymce-react";
 import { useTheme } from "next-themes";
 import Script from "next/script";
-import "../../utils/prismjs/prism.css"
+import "../../../utils/prismjs/prism.css"
 
 export const HtmlEditorComponent = ({ name }: { name: any }) => {
 	const { control } = useFormContext<PostFormData>();
