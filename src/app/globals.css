@@ -8,7 +8,7 @@
 	}
 
 	.dynamic-border {
-		@apply border border-black/10 dark:border-white/10;
+		@apply border border-black/10 dark:border-white/20;
 	}
 
 	.input {

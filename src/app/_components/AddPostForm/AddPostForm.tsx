@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import Button from "../Button";
 import { useSession } from "next-auth/react";
@@ -8,29 +8,30 @@ import { HtmlEditorComponent } from "./HtmlEditorComponent";
 
 export default function AddPostForm() {
 	const { data } = useSession();
-
 	const methods = useForm<PostFormData>();
 
 	const onSubmit = methods.handleSubmit((formData) => {
 		console.log("data", formData);
 
-		const postData = { ...formData, userId: data?.user?.email };
+		console.log(methods.formState.isValid)
 
-		fetch("api/AddPost", {
-			method: "POST",
-			body: JSON.stringify(postData),
-		})
-			.then((response) => console.log(response))
-			.catch((error) => console.log(error));
+		// const postData = { ...formData, userId: data?.user?.email };
+
+		// fetch("api/AddPost", {
+		// 	method: "POST",
+		// 	body: JSON.stringify(postData),
+		// })
+		// 	.then((response) => console.log(response))
+		// 	.catch((error) => console.log(error));
 	});
 
 	return (
 		<FormProvider {...methods}>
 			<form className="flex flex-col gap-2" onSubmit={onSubmit}>
-				<input {...methods.register("title")} className="input" type={"text"} placeholder={"title"} />
+				<input {...methods.register("title", {required: true})} className="input" type={"text"} placeholder={"title"} />
 				<HtmlEditorComponent name="content" />
 				<div className="flex flex-row-reverse gap-2 justify-start">
-					<Button type="submit" style="button-filled-invert">
+					<Button disabled={!methods.formState.isValid} type="submit" style="button-filled-invert">
 						Post
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
@@ -41,8 +42,7 @@ export default function AddPostForm() {
 							<path d="M3.478 2.405a.75.75 0 00-.926.94l2.432 7.905H13.5a.75.75 0 010 1.5H4.984l-2.432 7.905a.75.75 0 00.926.94 60.519 60.519 0 0018.445-8.986.75.75 0 000-1.218A60.517 60.517 0 003.478 2.405z" />
 						</svg>
 					</Button>
-					<Button type="submit" style="button-outline">
-						{" "}
+					<Button disabled={!methods.formState.isValid} type="submit" style="button-outline">
 						Save as draft
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
