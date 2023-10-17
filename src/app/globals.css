@@ -15,12 +15,15 @@
 		@apply dynamic-border h-9 rounded-md py-2 px-4 outline outline-0 outline-black/10 dark:outline-white/20 duration-100 focus:outline-4 focus:border-black/50 dark:focus:border-white/75 dark:bg-neutral-950;
 	}
 
+
+	/* Buttons */
+
 	.button {
 		@apply select-none flex justify-center items-center gap-2 rounded-md text-base font-medium px-4 py-1.5 cursor-pointer box-content duration-100 dynamic-border;
 	}
 
 	.disabled-button {
-		@apply bg-zinc-100 dark:bg-zinc-900 hover:bg-zinc-100 hover:dark:bg-zinc-900 text-neutral-400 dark:text-neutral-400 cursor-not-allowed;
+		@apply bg-zinc-100 dark:bg-zinc-900 hover:bg-zinc-100 hover:dark:bg-zinc-900 text-neutral-400 [&>svg>path]:text-neutral-400 dark:text-neutral-400 dark:[&>svg>path]:text-red-400 cursor-not-allowed;
 	}
 
 	.button-filled-isochromatic {
@@ -32,12 +35,13 @@
 	}
 
 	.button-outline {
-		@apply button border text-[var(--c-primary)] hover:bg-[var(--c-primary-hover)] hover:text-white;
+		@apply button border text-[var(--c-primary)] hover:bg-[var(--c-primary-hover)] hover:text-white disabled:disabled-button;
 	}
 
 	.button-icon {
 		@apply rounded-full p-2 border-none;
 	}
+
 
 	.page-content {
 		@apply max-w-screen-2xl mx-auto py-20 px-5;
